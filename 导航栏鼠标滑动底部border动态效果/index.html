@@ -58,26 +58,34 @@
 <script>
     var nav = document.getElementById('nav')
     var List = ['新闻1', '新闻2', '新闻3', '新闻4', '新闻5', '新闻6', '新闻7', '新闻8']
+    var initIndex = 0
     renderNav(List)
 
     //下滑线初始化代码
     var line = document.getElementsByClassName('line')[0]
     var liWidth = nav.children[0].clientWidth
     line.style.width = liWidth + 'px'
-    line.style.transform = 'translate3d(0,0,0)'
+    over(initIndex)
 
 
     
 
     //动画代码
-    function over(i) {
+    function over(i,e) {
+        //优化
+        if(initIndex==i)return
         line.style.transform = `translate3d(${i * liWidth}px,0,0)`
+    }
+
+    //新增优化  当触发过一次后不再触发
+    function out(i){
+        initIndex = i
     }
 
     function renderNav(navList) {
         let str = ''
         navList.forEach((item, index) => {
-            str += `<li onmouseover='over(${index})' >${item}</li>`
+            str += `<li onmouseover='over(${index})' onmouseout='out(${index})'>${item}</li>`
         })
         str += '<p class="line"></p>'
         nav.innerHTML = str
