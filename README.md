@@ -1,2 +1,0 @@
-# daily-fancy
-hello

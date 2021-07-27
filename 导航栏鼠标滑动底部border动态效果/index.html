@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-decoration: none;
+    }
+
+    #app {
+        margin: 100px 30px;
+    }
+
+    #app ul {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    ul li {
+        text-align: center;
+        padding: 12px 0;
+        flex: 1;
+        cursor: pointer;
+    }
+
+    .line {
+        position: absolute;
+        border-bottom: solid 1px red;
+        left: 0px;
+        bottom: 0px;
+        transition: all 0.3s linear;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <ul id="nav">
+            <li>新闻1</li>
+            <li>新闻2</li>
+            <li>新闻3</li>
+            <li>新闻4</li>
+            <li>新闻5</li>
+            <li>新闻6</li>
+            <li>新闻7</li>
+        </ul>
+    </div>
+</body>
+<script>
+    var nav = document.getElementById('nav')
+    var List = ['新闻1', '新闻2', '新闻3', '新闻4', '新闻5', '新闻6', '新闻7', '新闻8']
+    renderNav(List)
+
+    //下滑线初始化代码
+    var line = document.getElementsByClassName('line')[0]
+    var liWidth = nav.children[0].clientWidth
+    line.style.width = liWidth + 'px'
+    line.style.transform = 'translate3d(0,0,0)'
+
+
+    
+
+    //动画代码
+    function over(i) {
+        line.style.transform = `translate3d(${i * liWidth}px,0,0)`
+    }
+
+    function renderNav(navList) {
+        let str = ''
+        navList.forEach((item, index) => {
+            str += `<li onmouseover='over(${index})' >${item}</li>`
+        })
+        str += '<p class="line"></p>'
+        nav.innerHTML = str
+    }
+</script>
+
+</html>
