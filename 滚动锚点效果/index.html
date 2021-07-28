@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        a {
+            color: black;
+        }
+
+        .left {
+            /* float: left; */
+        }
+
+        .left div {
+            width: 400px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+        }
+
+        .left div:nth-of-type(odd) {
+            background: gainsboro;
+        }
+
+        .left div:nth-of-type(even) {
+            background: goldenrod;
+        }
+
+        .right {
+            /* float: left; */
+            /* margin-left: 50px; */
+            position: fixed;
+            left: 500px;
+            top: 100px;
+
+        }
+
+        /* .aa{
+            position: sticky;
+            top: 0;
+        } */
+        .right p {
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        .active {
+            color: hotpink;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="left">
+            <div id="id1"> 1</div>
+            <div id="id2">2</div>
+            <div id="id3">3</div>
+            <div id="id4">4</div>
+            <div id="id5">5</div>
+            <div id="id6">6</div>
+            <div id="id7">7</div>
+            <div id="id8">8</div>
+        </div>
+        <div class="right">
+            <!-- <p class="active"><a href="#id1">1</a></p>
+            <p> <a href="#id2">2</a></p>
+            <p> <a href="#id3">3</a></p>
+            <p> <a href="#id4">4</a></p>
+            <p> <a href="#id5">5</a></p>
+            <p> <a href="#id6">6</a></p>
+            <p> <a href="#id7">7</a></p>
+            <p> <a href="#id8">8</a></p> -->
+        </div>
+    </div>
+</body>
+<script>
+
+    var nav = document.getElementsByClassName('right')[0]
+    var list = [1, 2, 3, 4, 5, 6, 7, 8]
+
+    let str = ''
+    list.forEach((v, i) => {
+        str += `<p onclick='go(${v},this)'>${v}</p>`
+    })
+    nav.innerHTML = str
+    function go(item,nav) {
+        window.removeEventListener('scroll',scroll12)
+        Array.from(nav.parentNode.childNodes).forEach(v=>{
+            v.classList.remove('active')
+        }) 
+        nav.setAttribute('class','active')
+        var de = document.getElementById(`id${item}`)
+        window.scrollTo({
+            top: de.offsetTop,
+            behavior: "smooth"
+        });
+        setTimeout(() => {
+            window.addEventListener('scroll',scroll12)
+        }, 1000);
+    }
+
+    let pg = document.querySelectorAll('.right p')
+    let div = document.querySelectorAll('.left div')
+    
+    function scroll12(){
+        div.forEach((v,i)=>{
+            let top = v.getBoundingClientRect().top
+            pg[i].classList.remove('active')
+            console.log(top,i,'top i');
+            if(top<=10&&top>-200)pg[i].setAttribute('class','active')
+            
+        })
+    }
+    
+    window.addEventListener('scroll',scroll12)
+    pg[0].setAttribute('class','active')
+
+
+</script>
+
+</html>
