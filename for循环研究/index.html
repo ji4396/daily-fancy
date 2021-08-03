@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+
+
+    /*
+   
+       for (let a = 0; a < 2; a++) {
+           console.log(a,'a第一层'); 
+           for(let b = 0;b<2;b++){
+               console.log(b,'b第二层');
+               for(let c =0;c<2;c++){
+                   console.log(c,'c第三层');
+               }
+           }
+       }
+   
+      
+   
+           通过这个循环案例能够很清晰得看到js在for循环时候的一个执行过程
+           首先执行第一层输出第一层第一个的值，如果后面还有循环，则会执行循环里面的逻辑
+           以此类推
+           也就是所说的外层执行一次，内层执行一圈
+   
+   
+           控制台打印结果为
+           0 a第一层
+           0 b第二层
+           0 c第三层
+           1 c第三层
+           1 b第二层
+           0 c第三层
+           1 c第三层
+           1 a第一层 
+           0 b第二层
+           0 c第三层
+           1 c第三层
+           1 b第二层
+           0 c第三层 
+           1 c第三层
+           共14行
+       
+       */
+
+    var arr = [33,4, 23, 100, 9, 7, 49, 36, 57, 99];
+
+
+    /*
+        function kSort(arr) {
+            let len = arr.length;
+            if (arr.length <= 1){
+                return arr
+            } 
+            let middleIndex = Math.floor(arr.length / 2);
+            let middleValue = arr.splice(middleIndex, 1)[0]
+            let left = [], right = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] < middleValue) {
+                    left.push(arr[i])
+                } else {
+                    right.push(arr[i])
+                }
+            }
+            return kSort(left).concat([middleValue], kSort(right))
+    
+        }
+    
+        var quickSort = function (arr) {
+            if (arr.length <= 1) {
+                return arr;
+            }
+            var pivotIndex = Math.floor(arr.length / 2);
+            var pivot = arr.splice(pivotIndex, 1)[0];
+            var left = [];
+            var right = [];
+    
+            for (var i = 0; i < arr.length; i++) {
+                if (arr[i] < pivot) {
+                    left.push(arr[i]);
+                } else {
+                    right.push(arr[i]);
+                }
+            }
+            return quickSort(left).concat([pivot], quickSort(right));
+        };
+    
+    
+        console.log(kSort(arr),'1');
+        console.log(arr,'2');
+    
+        console.log(quickSort(arr));
+            */
+
+
+
+
+
+
+
+    function mSort(arr) {
+        let len = arr.length;
+        // 冒泡排序
+        // for (let i = 0; i < len; i++) {
+        //     for (let j = 0; j < len - i; j++) {
+        //         if (arr[j] > arr[j + 1]) {
+        //             [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]
+        //         }
+        //     }
+        // }
+        
+        // for(let i =0;i<len;i++){
+        //     for(let j = i+1;j<len;j++){
+        //         if(arr[i]>arr[j]){
+        //             [arr[j],arr[i]] = [arr[i],arr[j]]
+        //         }
+        //     }
+        //     console.log(arr,'arr.....ing');
+        // }
+        
+        //选择排序
+        let minValue,cc =[];
+        for(let i =0;i<len;i++){
+            minIndex = i
+
+            for(let j =i+1;j<len;j++){
+                if(arr[j]<arr[minIndex]){
+                    minIndex = j
+                }
+            }
+           if(minIndex!=i){
+               [arr[minIndex],arr[i]]=[arr[i],arr[minIndex]]
+           }
+        }
+
+        return arr
+        
+    }
+
+    console.log(mSort(arr));
+
+
+
+</script>
+
+</html>

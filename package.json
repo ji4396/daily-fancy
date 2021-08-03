@@ -1,0 +1,23 @@
+{
+  "name": "daily-fancy",
+  "version": "1.0.0",
+  "description": "hello",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ji4396/daily-fancy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ji4396/daily-fancy/issues"
+  },
+  "homepage": "https://github.com/ji4396/daily-fancy#readme",
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
