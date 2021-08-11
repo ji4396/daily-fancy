@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function debounce(fn, time) {
+        let timer = null
+
+        return (...args) => {
+            // 重新执行并停止上次执行（若上次还未执行则会被清除）
+            if (timer) {
+                clearTimeout(timer)
+            }
+
+            timer = setTimeout(() => {
+                console.log(this,'this');
+                timer = null
+                fn()
+                // fn.apply(this, args)
+            }, time)
+        }
+    }
+
+    debounce(()=>{},1000)()
+
+    console.log('-----------------------------')
+</script>
+
+</html>

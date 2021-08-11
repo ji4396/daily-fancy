@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    //“函数会首先被提升，然后才是变量”。
+    // Box() // 1
+
+    //   var Box = ()=>{
+    //       console.log(3);
+    //   }
+    var Box = function () {
+        console.log(2);
+    }
+
+
+    function Box() {
+        console.log(1);
+    }
+
+
+   
+    // Box() // 2\
+    console.log(Box);
+
+
+
+
+
+</script>
+
+</html>
