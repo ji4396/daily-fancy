@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    var a =1;
+
+    function test(){
+        a =10
+        console.log(a,'a1',window.a,'wa');
+        var a;
+        console.log(a,'a2',window.a,'wa');
+    }
+    test()
+    console.log(a,'a3');
+
+    var b =3;
+    var b=4;
+    console.log(b,'b');
+
+
+
+</script>
+</html>
