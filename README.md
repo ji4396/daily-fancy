@@ -1,3 +1,3 @@
 # daily-fancy
 hello
-test1
+leetcode
