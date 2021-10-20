@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{margin: 0;padding: 0;list-style: none;}
+    #box{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    li{
+        width: 100px;
+        height: 40px;
+        line-height: 40px;
+        /* border: solid 1px transparent; */
+       overflow: hidden;
+        text-align: right;
+        position: relative;
+        margin: 1px 0;
+        text-align: center;
+    }
+    li>div{
+        position: absolute;
+        height: 38px;
+        border: solid 1px red;
+        top: 0;
+        left: 100%;
+        width: 98px;
+        transition: all linear 1s;
+    }
+    .ji{
+        left: 0;
+    }
+</style>
+<body>
+    <ul id="box">
+        <li>
+            1
+            <div>
+            </div>
+        </li>
+        <li>
+            2
+            <div>
+            </div>
+        </li>
+        <li>
+            3
+            <div>
+            </div>
+        </li>
+    </ul>
+</body>
+<script>
+var lis = document.querySelectorAll('#box li')
+
+lis.forEach(el=>{
+    
+    
+    el.onclick = () =>{
+        lis.forEach(v=>{
+            v.children[0].removeAttribute('class','ji')
+        })
+        el.children[0].setAttribute('class','ji')
+    }
+})
+
+</script>
+</html>
