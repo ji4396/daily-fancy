@@ -1,0 +1,49 @@
+<script>
+    console.log(1);
+
+    var arr = [1, 2, { name: { firstName: 'ji',age:[1,2,3] }, sex: 'boy' }, 5]
+
+    // var arr2 = [...arr]
+
+    // arr2[0] = 'kkk'
+    // arr2[2].sex = 'kkk'
+
+
+    function deepClone(obj) {
+        if(typeof obj !=='object'||obj==null) return obj 
+        let cloneData = Array.isArray(obj) ? [] : {}
+        for (let i in obj) {
+            if (typeof obj[i] == 'object') {
+                cloneData[i] = deepClone(obj[i])
+            } else {
+                cloneData[i] = obj[i]
+            }
+        }
+        return cloneData
+    }
+    var arr2 = deepClone(arr)
+
+    // arr2[0] = 'kkk'
+    arr2[2].sex = 'kkk'
+    arr2[2].name.age[0]=99
+
+    console.log(arr2, 'arr2--deepclone');
+    console.log(arr, '---------------arr-------------');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
